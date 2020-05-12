@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-dark my-2">
+        <div class="card-body">
+          <h2 class="card-title text-center text-white py-3">{{title}}</h2>
+          <ul class="text-center list-inline py-3">
+            <li class="list-inline-item">
+              <a *ngIf="userService.isUserLoggedIn()" routerLink="/users"
+                class="btn btn-warning font-weight-bold">Entry</a>
+            </li>
+            <li class="list-inline-item">
+              <a *ngIf="!userService.isUserLoggedIn()" routerLink="/adduser"
+                class="btn btn-warning font-weight-bold">Sign Up</a>
+            </li>
+            <li class="list-inline-item">
+              <a *ngIf="!userService.isUserLoggedIn()" routerLink="/login" class="btn btn-warning font-weight-bold">Sign
+                In</a>
+            </li>
+            <li class="list-inline-item">
+              <a *ngIf="userService.isUserLoggedIn()" routerLink="/logout"
+                class="btn btn-warning font-weight-bold">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

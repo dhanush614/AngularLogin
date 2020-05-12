@@ -1,0 +1,38 @@
+<h1 class="text-center text-danger font-weight-bold">SIGN UP</h1>
+<div class="card my-5">
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #userForm="ngForm" name="userf">
+            <div class="form-group">
+                <label for="userid">User Id</label>
+                <input type="text" [(ngModel)]="user.userid" class="form-control" id="userid" name="userid"
+                    placeholder="Enter your Userid" minlength="6" required pattern="^(?=.*\d).{6}$" #userid="ngModel">
+            </div>
+            <div *ngIf="userid.invalid && (userid.dirty || userid.touched)" class="alert alert-danger">
+                <div *ngIf="userid.errors.required">
+                    User id is required.
+                </div>
+                <div *ngIf="userid.errors.minlength || userid.errors.pattern">
+                    User id must be 6 characters long<br>User id must be numeric.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" [(ngModel)]="user.password" class="form-control" id="password" name="password"
+                    placeholder="Enter your Password" minlength="8" required
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$" #password="ngModel">
+            </div>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                <div *ngIf="password.errors.required">
+                    Password is required.
+                </div>
+                <div *ngIf="password.errors.minlength">
+                    Password must be atleast 8 characters long
+                </div>
+                <div *ngIf="password.errors.pattern">
+                    Password must be alphanumeric and contain special characters.
+                </div>
+            </div>
+            <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
