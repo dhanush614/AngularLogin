@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
+import { Request } from '../model/request';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -16,6 +17,10 @@ export class UserServiceService {
 
   public save(user: User) {
     return this.http.post<User>('http://localhost:8080/save', user);
+  }
+
+  public saveRequest(request: Request) {
+    return this.http.post<Request>('http://localhost:8080/saveRequest', request);
   }
 
   public login(user: User): Observable<User> {
