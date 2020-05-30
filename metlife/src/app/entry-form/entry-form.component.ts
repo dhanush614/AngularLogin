@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserServiceService } from '../service/user-service.service';
+import { RequestServiceService } from '../service/request-service.service';
 import { Request } from '../model/request';
 
 @Component({
@@ -14,17 +14,17 @@ export class EntryFormComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router, private userService: UserServiceService
+    private router: Router, private requestService: RequestServiceService
   ) {
     this.request = new Request();
   }
 
   onSubmit() {
-    this.userService.saveRequest(this.request).subscribe(result => this.gotoUserList());
+    this.requestService.saveRequest(this.request).subscribe(result => this.gotoUserList());
   }
 
   gotoUserList() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/success']);
   }
 
 }

@@ -3,29 +3,42 @@
 	<div class="card-body">
 		<form (ngSubmit)="onSubmit()" #entryForm="ngForm" name="userf">
 			<div class="form-group">
-				<label for="requestid">Request Id</label>
-				<input type="text" [(ngModel)]="request.requestid" #requestid="ngModel" class="form-control"
-					id="requestid" name="requestid" placeholder="Enter Request Id" minlength="8" required
-					pattern="^(?=.*\d).{8}$">
+				<label for="username">Name</label>
+				<input type="text" [(ngModel)]="request.username" #username="ngModel" class="form-control" id="username"
+					name="username" placeholder="Enter Name" required>
 			</div>
-			<div *ngIf="requestid.invalid && (requestid.dirty || requestid.touched)" class="alert alert-danger">
-				<div *ngIf="requestid.errors.required">
-					Request id is required.
-				</div>
-				<div *ngIf="requestid.errors.minlength || requestid.errors.pattern">
-					Request id must be 8 characters long<br>Request id must be numeric.
+			<div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+				<div *ngIf="username.errors.required">
+					Name is required.
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="requesttype">Request Type</label>
-				<input type="text" [(ngModel)]="request.requesttype" #requesttype="ngModel" class="form-control"
-					id="requesttype" name="requesttype" placeholder="Enter Request Type" required>
+				<label for="email">Email Address</label>
+				<input type="email" [(ngModel)]="request.email" #email="ngModel" class="form-control" id="email"
+					name="email" placeholder="Enter Email Address" required
+					pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+			</div>
+			<div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+				<div *ngIf="email.errors.required">
+					Password is required.
+				</div>
+				<div *ngIf="email.errors.pattern">
+					Invalid Email Address.
+				</div>
 			</div>
 			<div class="form-group">
-				<label for="apptype">Application Type</label>
-				<input type="text" [(ngModel)]="request.apptype" #apptype="ngModel" class="form-control" id="apptype"
-					name="apptype" placeholder="Enter Application Type" required>
+				<label for="mobile">Contact Number</label>
+				<input type="text" [(ngModel)]="request.mobile" #mobile="ngModel" class="form-control" id="mobile"
+					name="mobile" placeholder="Enter Contact Number" minlength="10" required pattern="^(?=.*\d).{10}$">
+			</div>
+			<div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="alert alert-danger">
+				<div *ngIf="mobile.errors.required">
+					Contact Number is required.
+				</div>
+				<div *ngIf="mobile.errors.minlength || mobile.errors.pattern">
+					Contact Number must be 10 digits long.
+				</div>
 			</div>
 			<button type="submit" [disabled]="!entryForm.form.valid" class="btn btn-primary">Submit</button>
 		</form>

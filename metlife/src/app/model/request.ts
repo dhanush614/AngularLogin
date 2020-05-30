@@ -1,5 +1,5 @@
 export class Request {
-	requestid: string;
-	requesttype: string;
-	apptype: string;
+	username: string;
+	email: string;
+	mobile: string;
 }

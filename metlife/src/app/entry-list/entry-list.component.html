@@ -1,0 +1,20 @@
+<div class="card">
+	<div class="card-body">
+		<table class="table table-bordered table-hover">
+			<thead class="thead-dark">
+				<tr>
+					<th>Name</th>
+					<th>Email Address</th>
+					<th>Contact Number</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let request of requests">
+					<td>{{request.username}}</td>
+					<td>{{request.email}}</td>
+					<td>{{request.mobile}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
