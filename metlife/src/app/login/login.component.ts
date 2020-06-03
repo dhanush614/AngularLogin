@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   gotohomepage() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/success'], { state: { msg: 'Login Success..!!' } });
   }
 
   errorpage() {

@@ -24,7 +24,7 @@ export class EntryFormComponent {
   }
 
   gotoUserList() {
-    this.router.navigate(['/success']);
+    this.router.navigate(['/success'], { state: { msg: 'User Details added successfully..!!' } });
   }
 
 }

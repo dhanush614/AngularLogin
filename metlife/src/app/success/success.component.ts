@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-success',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuccessComponent implements OnInit {
 
-  constructor() { }
+  msg: string;
+
+  constructor(private router: Router) {
+    this.msg = this.router.getCurrentNavigation().extras.state.msg;
+  }
 
   ngOnInit(): void {
   }
