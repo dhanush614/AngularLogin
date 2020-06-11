@@ -96,6 +96,11 @@
 
     .minim {
       position: absolute;
+      right: 10%;
+      font-weight: bold;
+    }
+    .refresh {
+      position: absolute;
       right: 4%;
       font-weight: bold;
     }
@@ -111,10 +116,11 @@
 
       <div class="popuptext" id="myPopup">
         <div id="minimize" class="botHeader" style="display:none">
+          <span class="refresh" onclick="refreshChat()">&#10007;</span>
           <span class="minim" onclick="hideChat()">&#9866;</span>
           CaseManager Bot
         </div>
-        <iframe src="http://localhost:3000/" width="400" height="350" style="border-radius:0px 0px 20px 20px"></iframe>
+        <iframe id="botFrame" src="http://localhost:3001/" width="400" height="350" style="border-radius:0px 0px 20px 20px"></iframe>
       </div>
     </div>
   </div>
@@ -131,6 +137,12 @@
       var popup = document.getElementById("myPopup");
       popup.classList.remove("show");
       popup.classList.add("hide");
+    }
+
+    function refreshChat(){
+      var botFrame = document.getElementById("botFrame");
+      botFrame.src=botFrame.src;
+      hideChat();
     }
   </script>
 
