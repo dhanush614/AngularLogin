@@ -65,6 +65,28 @@
 
     }
 
+    @-webkit-keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+      }
+
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+      }
+
+    }
+
     .popup {
       position: fixed;
       z-index: 10;
@@ -87,14 +109,13 @@
 
     }
 
-    .botHeader {
-      background-color: black;
-      border-radius: 20px 20px 0px 0px;
-      margin-right: 1px;
-      padding: 2%
+    .minim {
+      position: absolute;
+      right: 10%;
+      font-weight: bold;
     }
 
-    .minim {
+    .refresh {
       position: absolute;
       right: 10%;
       font-weight: bold;
@@ -104,6 +125,15 @@
       right: 4%;
       font-weight: bold;
     }
+
+    .botHeader {
+      border-radius: 20px 20px 0px 0px;
+      border: 1px solid white;
+    }
+
+    .card-transparent {
+      background: transparent;
+    }
   </style>
 
 </head>
@@ -111,19 +141,22 @@
 <body>
   <app-root></app-root>
   <div class="container">
-    <div class="popup">
-      <span onclick="showChat()"><i class="fas fa-comments fa-lg"></i></span>
-
-      <div class="popuptext" id="myPopup">
-        <div id="minimize" class="botHeader" style="display:none">
-          <span class="refresh" onclick="refreshChat()">&#10007;</span>
-          <span class="minim" onclick="hideChat()">&#9866;</span>
-          CaseManager Bot
+    <div class="row">
+      <div class="col-md-12">
+        <div class="popup">
+          <span onclick="showChat()"><i class="fas fa-comments fa-lg"></i></span>
+          <div class="popuptext card card-transparent border-0" id="myPopup">
+            <div id="minimize" class="bg-dark text-light p-2 border-0 botHeader">
+              <span class="refresh" onclick="refreshChat()">&#10007;</span>
+              <span class="minim" onclick="hideChat()">&#9866;</span>
+              <span class="h5">CaseManager Bot</span>
+            </div>
+            <iframe style="border-radius: 0px 0px 20px 20px;" class="border-0" id="botFrame"
+              src="http://localhost:3001/" width="400" height="350"></iframe>
+          </div>
         </div>
-        <iframe id="botFrame" src="http://localhost:3001/" width="400" height="350" style="border-radius:0px 0px 20px 20px"></iframe>
-      </div>
-    </div>
-  </div>
+       </div>
+    </div> 
   <script type="text/javascript">
     function showChat() {
       var popup = document.getElementById("myPopup");
@@ -139,9 +172,9 @@
       popup.classList.add("hide");
     }
 
-    function refreshChat(){
+    function refreshChat() {
       var botFrame = document.getElementById("botFrame");
-      botFrame.src=botFrame.src;
+      botFrame.src = botFrame.src;
       hideChat();
     }
   </script>
