@@ -9,22 +9,22 @@ export class UserServiceService {
   private userurl: string;
 
   constructor(private http: HttpClient) {
-    this.userurl = 'http://localhost:8080/users';
+    this.userurl = 'http://localhost:8081/users';
   }
   public findAll(): Observable<User[]> {
     return this.http.get<User[]>(this.userurl);
   }
 
   public save(user: User) {
-    return this.http.post<User>('http://localhost:8080/save', user);
+    return this.http.post<User>('http://localhost:8081/save', user);
   }
 
   public saveRequest(request: Request) {
-    return this.http.post<Request>('http://localhost:8080/saveRequest', request);
+    return this.http.post<Request>('http://localhost:8081/saveRequest', request);
   }
 
   public login(user: User): Observable<User> {
-    return this.http.get<User>('http://localhost:8080/login', {
+    return this.http.get<User>('http://localhost:8081/login', {
       params: {
         userid: user.userid,
         password: user.password
@@ -33,20 +33,20 @@ export class UserServiceService {
   }
 
   public isUserLoggedIn() {
-    let user = localStorage.getItem('userid');
+    let user = localStorage.getItem('user');
     return !(user === null);
   }
 
   public logout() {
-    localStorage.removeItem('userid');
+    localStorage.removeItem('user');
   }
 
   public update(user: User) {
-    return this.http.put<User>('http://localhost:8080/update', user);
+    return this.http.put<User>('http://localhost:8081/update', user);
   }
 
   public delete(user: User) {
-    return this.http.delete('http://localhost:8080/delete', {
+    return this.http.delete('http://localhost:8081/delete', {
       params: {
         userid: user.userid
       }

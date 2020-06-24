@@ -11,8 +11,8 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css">
-  <style>
-    .popup .popuptext {
+<style>
+.popup .popuptext {
       visibility: hidden;
       text-align: center;
       position: absolute;
@@ -134,7 +134,7 @@
     .card-transparent {
       background: transparent;
     }
-  </style>
+</style>
 
 </head>
 
@@ -152,18 +152,36 @@
               <span class="h5">CaseManager Bot</span>
             </div>
             <iframe style="border-radius: 0px 0px 20px 20px;" class="border-0" id="botFrame"
-              src="http://localhost:3001/" width="400" height="350"></iframe>
+              src="" width="400" height="350"></iframe>
           </div>
         </div>
        </div>
     </div> 
+  
   <script type="text/javascript">
+  /* function myFunction(){
+    return "?authHeader="+localStorage.getItem("user"); 
+  } */
     function showChat() {
+      var botFrame = document.getElementById("botFrame");
+      var token = localStorage.getItem("user");
+      if(token!=null){
+      token = token.replace(/"/g,"");
+      }
+      var authHeader= "http://localhost:3001/?authHeader="+token;
+      botFrame.src = authHeader;    
       var popup = document.getElementById("myPopup");
       var minimize = document.getElementById("minimize");
       popup.classList.remove("hide");
       popup.classList.add("show");
       minimize.setAttribute("style", "display:block");
+    }
+
+    function authenticateToken() {
+      
+      var x = localStorage.getItem("user");
+      alert(x);
+      var botFrame = document.getElementById("botFrame");
     }
 
     function hideChat() {

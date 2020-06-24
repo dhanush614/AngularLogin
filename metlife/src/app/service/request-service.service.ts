@@ -9,7 +9,7 @@ export class RequestServiceService {
   private requesturl: string;
 
   constructor(private http: HttpClient) {
-    this.requesturl = 'http://localhost:8080/getRequests';
+    this.requesturl = 'http://localhost:8081/getRequests';
   }
 
   public findAll(): Observable<Request[]> {
@@ -17,7 +17,7 @@ export class RequestServiceService {
   }
 
   public saveRequest(request: Request) {
-    return this.http.post<Request>('http://localhost:8080/saveRequest', request);
+    return this.http.post<Request>('http://localhost:8081/saveRequest', request);
   }
 
 

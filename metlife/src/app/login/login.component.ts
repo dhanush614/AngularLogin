@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.user).subscribe(result => this.temp = result,
       error => this.errorpage());
     if (this.temp.valueOf()) {
-      localStorage.setItem('userid', this.temp.userid);
+      var authToken = btoa(this.user.userid+":"+this.user.password);
+      localStorage.setItem('user', JSON.stringify(authToken));
       this.gotohomepage();
     }
     else {
