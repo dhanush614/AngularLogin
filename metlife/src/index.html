@@ -7,8 +7,7 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css">
 <style>
@@ -117,11 +116,6 @@
 
     .refresh {
       position: absolute;
-      right: 10%;
-      font-weight: bold;
-    }
-    .refresh {
-      position: absolute;
       right: 4%;
       font-weight: bold;
     }
@@ -129,6 +123,8 @@
     .botHeader {
       border-radius: 20px 20px 0px 0px;
       border: 1px solid white;
+      background-color: #FF3CAC;
+      background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
     }
 
     .card-transparent {
@@ -138,30 +134,40 @@
 
 </head>
 
-<body>
+<body onload="showBot()">
   <app-root></app-root>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="popup">
-          <span onclick="showChat()"><i class="fas fa-comments fa-lg"></i></span>
+        <div class="popup" id="cmbot" style="display: none;">
+          <span data-toggle="tooltip" data-placement="left" title="May I help you.." onclick="showChat()"><i class="fas fa-comments fa-lg"></i></span>
           <div class="popuptext card card-transparent border-0" id="myPopup">
-            <div id="minimize" class="bg-dark text-light p-2 border-0 botHeader">
+            <div id="minimize" class="p-2 border-0 text-light botHeader">
               <span class="refresh" onclick="refreshChat()">&#10007;</span>
               <span class="minim" onclick="hideChat()">&#9866;</span>
-              <span class="h5">CaseManager Bot</span>
+              <span class="h5" style="letter-spacing:2px"><i class="fab fa-cuttlefish fa-sm"></i>laim <i class="fab fa-atlassian fa-sm"></i>ssistant</span>
             </div>
             <iframe style="border-radius: 0px 0px 20px 20px;" class="border-0" id="botFrame"
               src="" width="400" height="350"></iframe>
           </div>
         </div>
        </div>
-    </div> 
-  
+    </div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script type="text/javascript">
   /* function myFunction(){
     return "?authHeader="+localStorage.getItem("user"); 
   } */
+  function showBot() {
+      var token = localStorage.getItem("user");
+      if(token!=null){
+      var cmbot = document.getElementById("cmbot");
+      cmbot.style.display="block"
+      }
+    }
     function showChat() {
       var botFrame = document.getElementById("botFrame");
       var token = localStorage.getItem("user");
@@ -195,6 +201,10 @@
       botFrame.src = botFrame.src;
       hideChat();
     }
+    
+    $(function () {
+    	  $('[data-toggle="tooltip"]').tooltip()
+    	})
   </script>
 
 </body>

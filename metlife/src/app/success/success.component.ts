@@ -15,6 +15,7 @@ export class SuccessComponent implements OnInit {
   }
 
   ngOnInit(): void {
+	location.reload();
   }
 
 }
