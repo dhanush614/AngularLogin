@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Spring Boot - Angular Application</title>
+  <title>SmartBirds</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -175,8 +175,10 @@
       token = token.replace(/"/g,"");
       }
       var authHeader= "http://localhost:3001/?authHeader="+token;
-      botFrame.src = authHeader;    
       var popup = document.getElementById("myPopup");
+      if(!popup.classList.contains('minimize')){
+    	  botFrame.src = authHeader;  
+      }
       var minimize = document.getElementById("minimize");
       popup.classList.remove("hide");
       popup.classList.add("show");
@@ -190,16 +192,25 @@
       var botFrame = document.getElementById("botFrame");
     }
 
-    function hideChat() {
+    function hideChat(flag) {
       var popup = document.getElementById("myPopup");
       popup.classList.remove("show");
       popup.classList.add("hide");
+      if(flag){
+    	  popup.classList.add("refresh");
+    	  popup.classList.remove("minimize");
+      }
+      else{
+    	  popup.classList.remove("refresh");
+    	  popup.classList.add("minimize");
+      }
+      
     }
 
     function refreshChat() {
       var botFrame = document.getElementById("botFrame");
       botFrame.src = botFrame.src;
-      hideChat();
+      hideChat(true);
     }
     
     $(function () {

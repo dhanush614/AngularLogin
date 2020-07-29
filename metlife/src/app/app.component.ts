@@ -9,7 +9,7 @@ export class AppComponent implements OnInit {
   title: string;
   constructor(
     public userService: UserServiceService) {
-    this.title = 'MetLife';
+    this.title = 'SmartBirds';
   }
   ngOnInit() {
     
